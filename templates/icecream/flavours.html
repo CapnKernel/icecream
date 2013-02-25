@@ -5,10 +5,14 @@
 {% block content %}
 <p>A list of flavours:</p>
 
-<ul>
-  {% for flavour in flavours %}
-  <li>{{ flavour.id }}: {{ flavour.name }}, {{ flavour.litres }}, {{ flavour.sellprice }}</li>
-  {% endfor %}
-</ul>
+{% if flavours %}
+  <ul>
+    {% for flavour in flavours %}
+    <li>{{ flavour.id }}: {{ flavour.name }}, {{ flavour.litres }}, {{ flavour.sellprice }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Quick, better add some flavours before customers arrive!</p>
+{% endif %}
 
 {% endblock %}
