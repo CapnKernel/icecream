@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'cafe.views.home', name='home'),
-    # url(r'^cafe/', include('cafe.foo.urls')),
+    url(r'^icecream/', include('icecream.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
