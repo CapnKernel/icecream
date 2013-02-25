@@ -1,2 +1,3 @@
 *.pyc
 cafe.sqlite
+docs/_build
