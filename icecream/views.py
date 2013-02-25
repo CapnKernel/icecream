@@ -2,13 +2,14 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 
 from icecream.models import Flavour
 from icecream.forms import FlavourForm
 
 def flavours(request):
     flavours = Flavour.objects.all()
-    return render_to_response('icecream/flavours.html', {'flavours': flavours})
+    return render_to_response('icecream/flavours.html', {'flavours': flavours}, context_instance=RequestContext(request))
 
 def flavour_add(request):
     if request.method == 'POST':
@@ -16,7 +17,11 @@ def flavour_add(request):
         if form.is_valid():
             form.save()
 
+            messages.success(request, "Flavour added.")
+
             return HttpResponseRedirect(reverse('icecream.views.flavours'))
+            
+        messages.error(request, "The data is not valid, so the new flavour was not added.")
     else:
         form = FlavourForm()
 
@@ -29,7 +34,11 @@ def flavour_edit(request, id):
         if form.is_valid():
             form.save()
 
+            messages.success(request, "Flavour changed.")
+
             return HttpResponseRedirect(reverse('icecream.views.flavours'))
+
+        messages.error(request, "The data is not valid, so the flavour was not updated.")
     else:
         form = FlavourForm(instance=flavour) # bound form, loaded with data from the db
 
@@ -42,6 +51,8 @@ def flavour_delete(request, id):
 
     if request.method == 'POST':
         flavour.delete()
+
+        messages.success(request, "Flavour deleted.")
 
         return HttpResponseRedirect(reverse('icecream.views.flavours'))
 

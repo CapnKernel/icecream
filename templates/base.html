@@ -4,6 +4,14 @@
     <title>{% block title %}icecream.com: Nirvana for icecream lovers{% endblock %}</title>
   </head>
   <body>
+    {% if messages %}
+      <h2>Messages</h2>
+      <ul class="messages">
+        {% for message in messages %}
+          <li><i>{{ message }}</i></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     <h1>{% block header %}Nirvana for icecream lovers{% endblock %}</h1>
     {% block content %}{% endblock %}
     {% block footer %}
