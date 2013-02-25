@@ -1,9 +1,11 @@
+from django.shortcuts import render_to_response
 from django.shortcuts import Http404
 
 from icecream.models import Flavour
 
 def flavours(request):
-    raise Http404
+    flavours = Flavour.objects.all()
+    return render_to_response('icecream/flavours.html', {'flavours': flavours})
 
 def flavour_add(request):
     raise Http404
