@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block header %}All the flavours - Delete a flavour{% endblock %}
+{% block content %}
+<p>Delete a flavour:</p>
+
+<p>{{ flavour }}:</p>
+
+<p> Really delete?</p>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Delete" />
+</form>
+
+<p><a href="..">Back</a></p>
+{% endblock %}
+

@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.shortcuts import Http404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -27,4 +27,13 @@ def flavour_edit(request, id):
     raise Http404
 
 def flavour_delete(request, id):
-    raise Http404
+    # GET: Prompt for whether to delete a flavour
+    # POST: Delete the address and redirect to flavours
+    flavour = get_object_or_404(Flavour, pk=id)
+
+    if request.method == 'POST':
+        flavour.delete()
+
+        return HttpResponseRedirect(reverse('icecream.views.flavours'))
+
+    return render_to_response('icecream/flavour-delete.html', {'flavour': flavour}, context_instance=RequestContext(request))
