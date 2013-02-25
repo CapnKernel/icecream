@@ -4,6 +4,7 @@
 <p>Add a flavour:</p>
 
 <form method="POST">
+  {% csrf_token %}
   <p>Name: <input type="text" name="name" value="" /></p>
   <p>Litres: <input type="text" name="litres" value="" /></p>
   <p>Selling price: <input type="text" name="sellprice" value="" /></p>
