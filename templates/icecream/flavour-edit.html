@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block header %}All the flavours - Edit a flavour{% endblock %}
+{% block content %}
+<p>Edit a flavour:</p>
+
+<form method="POST">
+  {% csrf_token %}
+  <p>Name: <input type="text" name="name" value="{{ flavour.name }}" /></p>
+  <p>Litres: <input type="text" name="litres" value="{{ flavour.litres }}" /></p>
+  <p>Selling price: <input type="text" name="sellprice" value="{{ flavour.sellprice }}" /></p>
+  <p><input type="submit" value="Update" /></p>
+</form>
+
+<p><a href="{% url 'icecream.views.flavour_delete' flavour.id %}">Delete</a></p>
+
+<p><a href="..">Back</a></p>
+{% endblock %}
+

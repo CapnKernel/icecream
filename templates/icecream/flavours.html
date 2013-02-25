@@ -9,7 +9,7 @@
 {% if flavours %}
   <ul>
     {% for flavour in flavours %}
-    <li>{{ flavour.id }}: {{ flavour.name }}, {{ flavour.litres }}, {{ flavour.sellprice }}</li>
+    <li><a href="{% url 'icecream.views.flavour_edit' flavour.id %}">{{ flavour.name }}</a>: {{ flavour.litres }}, {{ flavour.sellprice }}</li>
     {% endfor %}
   </ul>
 {% else %}
