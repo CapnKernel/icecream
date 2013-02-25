@@ -8,7 +8,7 @@ def flavours(request):
     return render_to_response('icecream/flavours.html', {'flavours': flavours})
 
 def flavour_add(request):
-    raise Http404
+    return render_to_response('icecream/flavour-add.html')
 
 def flavour_edit(request, id):
     raise Http404
