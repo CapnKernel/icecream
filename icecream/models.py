@@ -9,3 +9,9 @@ class Flavour(models.Model):
     def __unicode__(self):
         return self.name
 
+class Person(models.Model):
+    name = models.CharField(max_length=60)
+    favourite_flavour = models.ForeignKey(Flavour)
+
+    def __unicode__(self):
+        return self.name
