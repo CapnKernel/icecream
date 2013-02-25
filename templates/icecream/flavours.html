@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 {% block header %}All the flavours{% endblock %}
 
@@ -15,6 +16,6 @@
   <p>Quick, better add some flavours before customers arrive!</p>
 {% endif %}
 
-<p><a href="http://localhost:8000/icecream/flavour/add/">Add</a> a new flavour.</p>
+<p><a href="{% url 'icecream.views.flavour_add' %}">Add</a> a new flavour.</p>
 
 {% endblock %}
